@@ -1,4 +1,4 @@
-package com.mywork.ignite.demo.node2;
+package com.mywork.ignite.demo.node1;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.mywork.ignite.demo.node2;
+package com.mywork.ignite.demo.node3;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.mywork.ignite.demo.node2;
+package com.mywork.ignite.demo.node3;
 
 import java.util.Collection;
 
@@ -57,7 +57,7 @@ public class IgniteConfiguraionManager {
 	        dataRegionConfiguration.setPersistenceEnabled(true);
 	        dataStorageConfiguration.setDataRegionConfigurations(dataRegionConfiguration);
 	        igniteConfiguration.setDataStorageConfiguration(dataStorageConfiguration);
-	        igniteConfiguration.setConsistentId("node2");
+	        igniteConfiguration.setConsistentId("node3");
         }
         // connector configuration
         ConnectorConfiguration connectorConfiguration=new ConnectorConfiguration();
@@ -72,22 +72,22 @@ public class IgniteConfiguraionManager {
         igniteConfiguration.setRebalanceThreadPoolSize(1);
         igniteConfiguration.setAsyncCallbackPoolSize(2);
         igniteConfiguration.setPeerClassLoadingEnabled(false);
-        igniteConfiguration.setIgniteInstanceName("node2");
+        igniteConfiguration.setIgniteInstanceName("node3");
         BinaryConfiguration binaryConfiguration = new BinaryConfiguration();
         binaryConfiguration.setCompactFooter(false);
         igniteConfiguration.setBinaryConfiguration(binaryConfiguration);
         // cluster tcp configuration
         TcpDiscoverySpi tcpDiscoverySpi=new TcpDiscoverySpi();
-        //tcpDiscoverySpi.setLocalPort(48500);
         TcpDiscoveryVmIpFinder tcpDiscoveryVmIpFinder=new TcpDiscoveryVmIpFinder();
         // need to be changed when it come to real cluster
-     //   tcpDiscoveryVmIpFinder.setAddresses(Arrays.asList("127.0.0.1:48500..48509"));
-     //   tcpDiscoverySpi.setIpFinder(tcpDiscoveryVmIpFinder);
+        //tcpDiscoverySpi.setLocalPort(49500);
+      //  tcpDiscoveryVmIpFinder.setAddresses(Arrays.asList("127.0.0.1:48500..48509"));
+      //  tcpDiscoverySpi.setIpFinder(tcpDiscoveryVmIpFinder);
         igniteConfiguration.setDiscoverySpi(tcpDiscoverySpi);
         // cache configuration
         
-        TcpCommunicationSpi tcpCommunicationSpi =  new TcpCommunicationSpi();
-       // tcpCommunicationSpi.setLocalPort(48100);
+        TcpCommunicationSpi tcpCommunicationSpi = new TcpCommunicationSpi();
+        //tcpCommunicationSpi.setLocalPort(49100);
         igniteConfiguration.setCommunicationSpi(tcpCommunicationSpi);
         
         CacheConfiguration personCache=new CacheConfiguration();
@@ -111,12 +111,12 @@ public class IgniteConfiguraionManager {
 	    // Activate the cluster. Automatic topology initialization occurs
 	    // only if you manually activate the cluster for the very first time.
 	    ignite.cluster().active(true);
-	   // Collection<ClusterNode> nodes = ignite.cluster().forServers().nodes();
-	   // ignite.cluster().setBaselineTopology(nodes);
 	    /*// Get all server nodes that are already up and running.
 	    Collection<ClusterNode> nodes = ignite.cluster().forServers().nodes();
 		// Set the baseline topology that is represented by these nodes.
 	    ignite.cluster().setBaselineTopology(nodes);*/
+	   // Collection<ClusterNode> nodes = ignite.cluster().forServers().nodes();
+	   //ignite.cluster().setBaselineTopology(nodes);
 	    return ignite;
     }
 
